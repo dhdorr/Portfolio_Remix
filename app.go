@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"errors"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -16,47 +17,41 @@ func main() {
 
 	http.HandleFunc("GET /models", func(w http.ResponseWriter, r *http.Request) {
 		makeParam := r.URL.Query().Get("make")
-		switch makeParam {
-		case "audi":
-			audi, err := template.ParseFiles("./models/audi.html")
-			if err != nil {
-				fmt.Println("error on options parsing")
-				return
-			}
-			audi.Execute(w, nil)
-		case "toyota":
-			toyota, err := template.ParseFiles("./models/toyota.html")
-			if err != nil {
-				fmt.Println("error on options parsing")
-				return
-			}
-			toyota.Execute(w, nil)
-		case "bmw":
-			bmw, err := template.ParseFiles("./models/bmw.html")
-			if err != nil {
-				fmt.Println("error on options parsing")
-				return
-			}
-			bmw.Execute(w, nil)
-		default:
-			audi, err := template.ParseFiles("/models/audi.html")
-			if err != nil {
-				fmt.Println("error on options parsing")
-				return
-			}
-			audi.Execute(w, nil)
+		tmpl, err := handleTemplate(makeParam)
+		if err != nil {
+			log.Fatal(err)
 		}
-		// 		optionsStr := fmt.Sprintf(`<option value='A1'>A1</option>
-		// <option value='A4'>A4</option>
-		// <option value='A6'>A6</option>`)
-
-		// 		templ, err := template.New("t").Parse(optionsStr)
-		// 		if err != nil {
-		// 			fmt.Println("error on options parsing")
-		// 			return
-		// 		}
-		// 		templ.Execute(w, nil)
+		tmpl.Execute(w, nil)
 	})
 
 	http.ListenAndServe(":8000", nil)
+}
+
+func handleTemplate(param string) (*template.Template, error) {
+	switch param {
+	case "audi":
+		audi, err := template.ParseFiles("./models/audi.html")
+		if err != nil {
+			return nil, errors.New("error on options parsing")
+		}
+		return audi, nil
+	case "toyota":
+		toyota, err := template.ParseFiles("./models/toyota.html")
+		if err != nil {
+			return nil, errors.New("error on options parsing")
+		}
+		return toyota, nil
+	case "bmw":
+		bmw, err := template.ParseFiles("./models/bmw.html")
+		if err != nil {
+			return nil, errors.New("error on options parsing")
+		}
+		return bmw, nil
+	default:
+		audi, err := template.ParseFiles("/models/audi.html")
+		if err != nil {
+			return nil, errors.New("error on options parsing")
+		}
+		return audi, nil
+	}
 }
