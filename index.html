@@ -6,24 +6,33 @@
     <title>Portfolio Remix</title>
 
     <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+    <link rel="stylesheet" href="/static/css/styles.css" />
 </head>
 <body>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/kKAue9DiHc0?si=2oy__YjBkRMH9sN-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>    <div>
-        <label >Make</label>
-        <select name="make" hx-get="/models" hx-target="#models" hx-indicator=".htmx-indicator">
-            <option value="audi">Audi</option>
-            <option value="toyota">Toyota</option>
-            <option value="bmw">BMW</option>
-        </select>
-    </div>
-    <div>
-        <label>Model</label>
-        <select id="models" name="model">
-            <option value="a1">A1</option>
-            <option value="a4">A4</option>
-            <option value="a6">A6</option>
-        </select>
-        <img class="htmx-indicator" width="20" src="/img/bars.svg">
-    </div>
+    <main class="portfolio-canvas-container">
+        <div class="portfolio-canvas square">
+            <div class="nav-bar-container square">
+                <div class="nav-bar">
+                    <ul>
+                        <li><button name="home" hx-get="/home" hx-target="#content" hx-indicator=".htmx-indicator" hx-swap="innerHTML">Home</button></li>
+                        <li><button name="about" hx-get="/about" hx-target="#content" hx-indicator=".htmx-indicator" hx-swap="innerHTML">About Me</button></li>
+                        <li><button name="projects" hx-get="/projects" hx-target="#content" hx-indicator=".htmx-indicator" hx-swap="innerHTML">Projects</button></li>
+                        <li><button>Credits</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content" id="content">
+                <div class="home-wrapper">
+                    <div class="home">
+                        <h1>Derek's Portfolio Remix</h1>
+                        <p>HTMX is pretty neat :)</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    
 </body>
 </html>
