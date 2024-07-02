@@ -6,7 +6,10 @@
     <title>Portfolio Remix</title>
 
     <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+
+    <script src="/static/js/cache.js"></script>
     <link rel="stylesheet" href="/static/css/styles.css" />
+
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +21,9 @@
             <div class="nav-bar-container square-nav glass">
                 <nav class="nav-bar">
                     <ul>
-                        <li><button name="home" hx-get="/home" hx-target="#content" hx-indicator=".htmx-indicator" hx-swap="innerHTML">Home</button></li>
-                        <li><button name="about" hx-get="/about" hx-target="#content" hx-indicator=".htmx-indicator" hx-swap="innerHTML">About Me</button></li>
-                        <li><button name="projects" hx-get="/projects" hx-target="#content" hx-indicator=".htmx-indicator" hx-swap="innerHTML">Projects</button></li>
+                        <li><button name="home" hx-get="/home" hx-target="#content" hx-swap="innerHTML">Home</button></li>
+                        <li><button name="about" hx-get="/about" hx-target="#content" hx-swap="innerHTML">About Me</button></li>
+                        <li><button name="projects" hx-get="/projects" hx-target="#content" hx-swap="innerHTML">Projects</button></li>
                         <li><button>Credits</button></li>
                     </ul>
                 </nav>
