@@ -21,6 +21,7 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println("sending /home response")
+		// time.Sleep(1 * time.Second)
 		tmpl.Execute(w, nil)
 	})
 
@@ -30,6 +31,7 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println("sending /about response")
+		// time.Sleep(1 * time.Second)
 		tmpl.Execute(w, nil)
 	})
 
@@ -39,6 +41,7 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println("sending /projects response")
+		// time.Sleep(1 * time.Second)
 		tmpl.Execute(w, nil)
 	})
 

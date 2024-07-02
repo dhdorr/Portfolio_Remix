@@ -285,7 +285,7 @@ body {
     height: 11.75vw;
     width: 17.625vw;
     background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 3px 3px 9px rgba(3, 20, 44, .66);
+    box-shadow: 3px 3px 9px rgb(0, 0, 0);
     overflow: hidden;
 }
 
@@ -322,7 +322,7 @@ body {
     transition: transform 0.1s linear;
     .card-banner {
         height: 150px;
-        transition: height 0.05s linear;
+        transition: height 0.075s linear;
 
         p {
             /* display: contents; */

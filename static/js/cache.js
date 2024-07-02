@@ -4,7 +4,7 @@ console.log("hello world");
 
 document.addEventListener('htmx:beforeRequest', function(evt) {
     var url = evt.detail.requestConfig.path;
-    if (evt.detail.requestConfig.verb === "GET" || evt.detail.requestConfig.verb === "get") {
+    if (String(evt.detail.requestConfig.verb).toLowerCase() === "get") {
         if (cache[url]) {
             console.log(`URL: ${url} is already cached`);
             evt.preventDefault();
@@ -18,7 +18,7 @@ document.addEventListener('htmx:beforeRequest', function(evt) {
 
 document.addEventListener('htmx:afterRequest', function(evt) {
     var url = evt.detail.requestConfig.path;
-    if (evt.detail.requestConfig.verb === "GET" || evt.detail.requestConfig.verb === "get") {
+    if (String(evt.detail.requestConfig.verb).toLowerCase() === "get") {
         if (!cache[url]) {
             evt.detail.xhr.responseText && (cache[url] = evt.detail.xhr.responseText);
             console.log(`Cached HTMX response for ${url}`);
