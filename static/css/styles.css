@@ -121,6 +121,7 @@ body {
     font-weight: 700;
     font-style: normal;
     font-size: 24px;
+    cursor: pointer;
 }
 
 /* CONTENT */
@@ -211,7 +212,7 @@ body {
 
 .career-interests ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     /* background-color: cadetblue; */
 }
 
@@ -220,6 +221,10 @@ body {
     display: inline; 
     text-align: center;
     font-size: 24px;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 0.66s;
+    animation-delay: calc(0.15s * var(--bindex) + 1.5s);
 }
 
 /* PROJECTS */
@@ -275,6 +280,7 @@ body {
     background-color: rgb(144, 163, 184);
     box-shadow: 3px 3px 9px rgb(0, 0, 0);
     overflow: hidden;
+    cursor: pointer;
 }
 
 .card-banner {
@@ -349,3 +355,48 @@ body {
     }
 
 }
+
+/* Animations */
+.slide-right {
+    position: relative;
+    animation-name: slide-from-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+.slide-left {
+    position: relative;
+    animation-name: slide-from-left;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-from-right {
+    from {
+    right: 100%;
+    }
+    to {
+    right: 0%;
+    }
+}
+
+@keyframes slide-from-left {
+    from {
+    left: 100%;
+    }
+    to {
+    left: 0%;
+    }
+}
+
+@keyframes bounce {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
