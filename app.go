@@ -7,6 +7,15 @@ import (
 	"net/http"
 )
 
+type Project struct {
+	Title       string
+	Description string
+}
+
+type ProjectPageData struct {
+	Projects []Project
+}
+
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
@@ -40,9 +49,66 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+
+		data := ProjectPageData{
+			Projects: []Project{
+				{
+					Title:       "Github",
+					Description: "See what I'm working on now!",
+				},
+				{
+					Title:       "Testing",
+					Description: "This is confusing...",
+				},
+				{
+					Title:       "Testing 2",
+					Description: "This is still confusing...",
+				},
+				{
+					Title:       "A* Path Visualizer",
+					Description: "Try out an interactive pathfinding algorithm visualizer!",
+				},
+				{
+					Title:       "Published Games",
+					Description: "Play some published game jam games!",
+				},
+				{
+					Title:       "Word Masters",
+					Description: "Can you guess the word of the day in this Wordle clone?",
+				},
+				{
+					Title:       "Pac-Man Portal",
+					Description: "Chomp pellets and portal your way to victory in this demo!",
+				},
+				{
+					Title:       "Testing",
+					Description: "This is confusing...",
+				},
+				{
+					Title:       "Testing 2",
+					Description: "This is still confusing...",
+				},
+				{
+					Title:       "A* Path Visualizer",
+					Description: "Try out an interactive pathfinding algorithm visualizer!",
+				},
+				{
+					Title:       "Published Games",
+					Description: "Play some published game jam games!",
+				},
+				{
+					Title:       "Word Masters",
+					Description: "Can you guess the word of the day in this Wordle clone?",
+				},
+				{
+					Title:       "Pac-Man Portal",
+					Description: "Chomp pellets and portal your way to victory in this demo!",
+				},
+			},
+		}
 		fmt.Println("sending /projects response")
 		// time.Sleep(1 * time.Second)
-		tmpl.Execute(w, nil)
+		tmpl.Execute(w, data)
 	})
 
 	// Add this line to serve static files
